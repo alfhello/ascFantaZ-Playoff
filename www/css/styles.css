@@ -1,0 +1,605 @@
+/*
+   statusbar-overlay sets the background color for the overlay. Black text is the default when the statusbar plugin is not added. When the
+   statusbar plugin is added, it also adds default setting to make the content white via:
+
+       <preference name="StatusBarStyle" value="lightcontent"/>
+
+   Setting the background color to black will allow the default light content (white text/icons) to show on it. The statusbar plugin is included
+   in the config.xml file and will be added by the CLI when you build locally.
+
+   See https://github.com/apache/cordova-plugin-statusbar
+*/
+
+.statusbar-overlay {
+    background: #000000;
+}
+
+.ascPlayOff {
+    background:url(../img/ascPlayOff.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:40%;
+    top:30%;
+    height:50px;                   /* text area height */
+    width:350px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+.ascLOGO {
+    background:url(../img/ascAppLogo.jpg) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+.ascLOGO.signIN {
+	position:absolute;             /* position in the center of the screen */
+	top:25%;
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+	animation-name: moveUpSlow;
+	animation-duration: 0.5s;
+}
+
+@keyframes moveUpSlow {
+  0%   {left:50%;top:44%;height:50px;width:225px;padding:180px 0px 0px 0px;margin:-115px 0px 0px -112px;}
+  100%  {left:50%;top:25%;height:50px;width:225px;padding:180px 0px 0px 0px;margin:-115px 0px 0px -112px;}
+}
+
+.LOGOInput {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#4B946A;
+    font-size:12px;
+    margin:2px;
+	width:170px;
+	text-align:center;
+	font-weight:bold;
+}
+
+.LOGOInput.pcode {
+	color:#C66;
+}
+
+.ascHome {
+    position:absolute;             /* position in the center of the screen */
+    top:50%;
+    height:30px;                   /* text area height */
+    width:100%;                   /* text area width */
+    text-align:center;
+	color: red;
+	font-variant-caps: petite-caps;
+	border-bottom: solid 1px;
+	font-weight:lighter;
+}
+
+h1 {
+    font-size:34px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.ascResult {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 10px;
+	width:150px;
+	text-align:center;
+}
+
+.ascResult.listening {
+    background-color:#333333;
+    padding:4px 20px;	
+}
+
+.ascResult.ascConnect {
+    background-color:#4B946A;
+    padding:4px 10px;
+}
+
+.ascResult.ascRegLogin {
+	background-color:#C66;	
+    padding:4px 10px;
+}
+
+.ascResult.ascButton {
+	background-color:#C66;	
+    padding:4px 10px;
+}
+
+.ascResult.ascCancel {
+	background-color:#CCC;	
+    padding:4px 30px;
+	color:#F00;
+	font-weight:bolder;
+}
+
+.ascResult.ascTempSupp {
+    border-radius:4px;
+	background-color:#00C;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 10px;
+	width:170px;
+	text-align:center;
+	height:26px;
+}
+
+.ascResult.ascCancel.hide {
+	display:none;	
+}
+
+.ascResult.ascConnect.hide {
+	display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.7; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.7; }
+    to { opacity: 1.0; }
+}
+
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+.wrnLabel {
+	color: red;
+	font-size:11px;
+	height:20px;
+}
+
+.SignINFade {
+	animation: signINfade 3.5s;
+	-webkit-animation: signINfade 3.5s;	
+}
+
+.signINObj {
+	margin-top: 5px;	
+}
+
+@keyframes signINFade {
+	from { opacity:0;}
+	to { opacity: 1;}
+}
+
+@-webkit-keyframes signINfade {
+	from { opacity:0;}
+	to { opacity: 1;}	
+}
+
+.ascSignUP {
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    bottom:10%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+}
+
+.CPOS.AvailTo {
+	color:#396;
+	display: none;
+}
+
+.CPOS.ChangeTo {
+	display: inline-block;	
+	background-color:#F00;
+}
+
+.TPOS.POS_G {
+	background-color:#0CF;
+}
+.TPOS.POS_F {
+	background-color:#9C3;
+}
+.TPOS.POS_C {
+	background-color:#C9F;
+}
+.TPOS.POS_6 {
+	background-color:#CCC;
+}
+.TPOS.POS_GF {
+	background-image: linear-gradient(135deg, #0CF 35%, #9C3 65%); 	
+}
+.TPOS.POS_FG {
+	background-image: linear-gradient(135deg, #0CF 35%, #9C3 65%); 	
+}
+.TPOS.POS_FC {
+	background-image: linear-gradient(135deg, #9C3 35%, #C9F 65%); 
+}
+.TPOS.POS_CF {
+	background-image: linear-gradient(135deg, #9C3 35%, #C9F 65%); 
+}
+.TPOS.ChangeFm {
+	display:none;
+}
+
+.TACPRank.POS_GB {
+	background-color: #0CF; 	
+	background-position:center;
+}
+.TACPRank.POS_FB {
+	background-color: #9C3; 	
+	background-position:center;
+}
+.TACPRank.POS_CB {
+	background-color: #C9F; 	
+	background-position:center;
+}
+.TACPRank.POS_GFB {
+	background-image: linear-gradient(135deg, #0CF 35%, #9C3 65%); 	
+	background-position:center;
+}
+.TACPRank.POS_FGB {
+	background-image: linear-gradient(135deg, #0CF 35%, #9C3 65%); 	
+	background-position:center;
+}
+.TACPRank.POS_FCB {
+	background-image: linear-gradient(135deg, #9C3 35%, #C9F 65%); 	
+	background-position:center;
+}
+.TACPRank.POS_CFB {
+	background-image: linear-gradient(135deg, #9C3 35%, #C9F 65%); 	
+	background-position:center;
+}
+
+.POSFlag {
+    width: 35px;
+    text-align: center;
+    font-size:;
+    font-weight: bolder;
+}
+
+.POSFlag.ChangeTo {
+	background-color:#F00;
+	color:#FF0;
+}
+
+.list-block .swipeout-actions-left a.APOS.pG {
+	padding:2;
+	background-color:#0CF;	
+}
+.list-block .swipeout-actions-left a.APOS.pF {
+	padding:2;
+	background-color:#9C3;	
+}
+.list-block .swipeout-actions-left a.APOS.pC {
+	padding:2;
+	background-color:#C9F;	
+}
+.list-block .swipeout-actions-left a.APOS.p6 {
+	padding:2;
+	background-color:#CCC;	
+}
+
+.UTRoster {
+	display:block;
+	height:20px;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+	border-bottom-color:#CCC;
+}
+
+.UTRoster.inActive {
+	display:none;	
+}
+
+.resetTRoster {
+	font-stretch:semi-condensed;
+	padding-left:10px;	
+	color:#F00;
+	display:block;
+	float:left
+}
+.saveTRoster {
+	font-stretch:semi-condensed;
+	padding-left:10px;	
+	color:#00F;
+	display:block;
+	float:right;
+}
+.hiddenBtn {
+	display:none;
+}
+.hiddenBtn.Active {
+	display:block;	
+}
+.preloader {
+	display:none;	
+}
+.preloader.Active {
+	display:block;	
+}
+.tab-link.Stat-active {
+	color:#09F;
+}
+.tabbar-labels a.tab-link i+span {
+	margin-top:	4px;
+}
+.TDdisplay {
+	float:right;
+	color:#F00;
+	font-weight:bolder;
+}
+.bonusFlash {
+    animation:hooray 1000ms infinite;
+    -webkit-animation:hooray 1000ms infinite;	
+}
+
+@keyframes hooray {
+    from { opacity: 1.0; }
+    50% { opacity: 0.2; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes hooray {
+    from { opacity: 1.0; }
+    50% { opacity: 0.2; }
+    to { opacity: 1.0; }
+}
+a.swipeout-content.buyRoster {
+	background-color:lightskyblue;
+}
+a.swipeout-content.sellRoster {
+	background-color:darkgoldenrod;
+}
+.tabbar-labels a.tab-link span.tHeader {
+	margin-bottom: 4px;
+	font-size:x-small;	
+	text-align:center;
+}
+.tabbar-labels a.tab-link i+span.tData {
+	font-size:large;
+	color:#000;
+}
+.tabbar-labels a.tab-link i+span.tDataS {
+	font-size:small;
+	color:#000;	
+}
+.TopTeamName {
+	display:none;	
+}
+.TopTeamName.Active {
+	display:block;
+	margin-left: 4px;
+}
+.badge.headdsp {
+	font-family:"MS Serif", "New York", serif;
+	font-size:large;
+}
+a.tab-link.TACP {
+	color:cornflowerblue;
+}
+a.tab-link.TVal {
+	color:lightsalmon;
+}
+a.tab-link.ACP {
+	color:lightseagreen;
+}
+.tabbar-labels a.tab-link i+span.tData.TACP {
+	color:cornflowerblue;
+}
+.tabbar-labels a.tab-link i+span.tData.TVal {
+	color:lightsalmon;
+}
+.tabbar-labels a.tab-link i+span.tData.ACP {
+	color:lightseagreen;
+}
+a.tab-link.TTx {
+	color:darkgoldenrod;
+}
+.tabbar-labels a.tab-link i+span.tData.TTx {
+	color:darkgoldenrod;
+}
+a.tab-link.TCRm {
+	color:violet;
+}
+.tabbar-labels a.tab-link i+span.tData.TCRm {
+	color:violet;
+}
+
+.TUTLRank.RK1 {
+	background-color: gold; 	
+	background-position:center;
+}
+.TUTLRank.RK2 {
+	background-color: silver; 	
+	background-position:center;
+}
+.TUTLRank.Self {
+	color: red;	
+}
+.wLGrp {
+	background-color: lightblue;
+	border-radius: 8px;
+	font-size:small;
+    width: 90px;
+    height: 24px;
+    margin-top: 6px;
+    text-align: center;	
+	padding-top: 6px;
+	float:left;
+}
+.SelfTm {
+	background-color: papayawhip;	
+}
+.PrnTm {
+	background-color: azure;	
+}
+.UTTr {
+	height:100%;
+	background-color: beige;
+}
+.UTTrLi {
+	list-style:none;
+	height:56px;
+}
+.RdyTr {
+	height:100%;
+	background-color: white;
+}
+.RdyTrLi {
+	list-style:none;
+	height:56px;
+}
+.RdyTrSepr {
+	height: 30px;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-style: outset;
+    border-color: darkcyan;
+    background-color: bisque;
+    text-align: center;
+    font-weight: bolder;
+    font-size: medium;
+}
+.RdyTr.toBuy {
+	height:100%;
+	background-color: lightgreen;
+}
+.CurrTmRoster {
+	height: 30px;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-style: outset;
+    border-color: darkcyan;
+    background-color: lightblue;
+    text-align: center;
+    font-weight: bolder;
+    font-size: medium;	
+}
+.PlyLst {
+	height: 30px;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-style: outset;
+    border-color: darkcyan;
+    background-color: bisque;
+    text-align: center;
+    font-weight: bolder;
+    font-size: medium;	
+}
+.swipeout-actions-right a.SellActive {
+	display:block;
+	padding-top: 15px;
+    background-color: maroon;
+}
+.swipeout-actions-right a.SellCancel {
+	display:none;
+	padding-top: 15px;
+    background-color: gray;	
+}
+.swipeout-actions-right a.SellActive.Active {
+	display:none;
+}
+.swipeout-actions-right a.SellCancel.Active {
+	display:block;
+}
+.toSell {
+	background-color: red;	
+}
+.toBuy {
+	background-color: green;	
+}
+.CmdBar_woReplace {
+	display:none;
+}
+.CmdBar_woReplace.Active {
+	margin-bottom:2px;	
+	display:block;
+	margin-top: 10px;
+	height: 20px;
+}
+.tr_section {
+	display: none;
+}
+.tr_section.Active {
+	display: block;
+}
+.BtnPlayerG {
+	background-color:#0CF;	
+}
+.BtnPlayerF {
+	background-color:#9C3;	
+}
+.BtnPlayerC {
+	background-color:#C9F;	
+}
+.BtnPlayerB {
+	background: conic-gradient( #0CF, #0CF, #9C3, #9C3, #C9F, #C9F);	
+}
+.tmRosterWL {
+	display:none;	
+}
+.tmRosterWL.Active {
+	display:none;
+	font-size:small;	
+}
+.swipeout-actions-right a.PutWLActive {
+    display: block;
+    padding-top: 10px;
+    background-color: mediumseagreen;
+    text-align: center;
+    line-height: 18px;
+}
+.swipeout-actions-right a.BuyActive {
+	display:block;
+	padding-top: 15px;
+    background-color: mediumseagreen;
+}
+.swipeout-actions-right a.BuyCancel {
+	display:none;
+	padding-top: 15px;
+    background-color: gray;	
+}
+.swipeout-actions-right a.BuyActive.Active {
+	display:none;
+}
+.swipeout-actions-right a.BuyCancel.Active {
+	display:block;
+}
+.swipeout-actions-right a.RemoveWL {
+	background-color: black;
+	width: 80px;
+	text-align:center;	
+}
+.UTTmLi {
+	list-style:none;
+	height:52px;
+	padding-left: 6px;
+	line-height:24px;
+}
+.UTTmAft {
+	width:130px;	
+}
+.pByTeam, .pByPos, .pByCost {
+	color:black;
+}
+.pByTeam:active, .pByPos:active, .pByCost:active {
+	color:#3CF;	
+}

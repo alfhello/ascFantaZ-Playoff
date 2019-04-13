@@ -1,0 +1,98 @@
+<div data-page="pageACPRank" class="page navbar-through toolbar-through" title="ACP Ranking">
+
+<!---		
+        <div id="RankPanel">
+        	<ul>
+            <li id="doTACPRank">Total ACP Ranking</li>
+            <li id="doAACPRank">Avg ACP Ranking</li>
+            </ul>
+        </div>
+--->
+        
+<div class="toolbar tabbar tabbar-labels" style="position:fixed;top:43px;height:53px;">
+    <div class="toolbar-inner" style="padding-top:4px;">
+	  <a id="doDACPRank" class="tab-link {{#js_if "this.ACTIVE === 'DACP'"}}Stat-active{{/js_if}}">
+        <i class="icon f7-icons">document
+<!---
+        <span class="badge color-red">New</span>
+--->        
+        </i>
+        <span class="tabbar-label ACP-title">Last Result</span>
+      </a>  
+      <a id="doTACPRank" class="tab-link {{#js_if "this.ACTIVE === 'TACP'"}}Stat-active{{/js_if}}">
+        <i class="icon f7-icons ios-only">document_chart</i>
+        <span class="tabbar-label ACP-title">Total ACP</span>
+      </a>
+      <a id="doAACPRank" class="tab-link {{#js_if "this.ACTIVE === 'AACP'"}}Stat-active{{/js_if}}">
+        <i class="icon f7-icons">document_chart_fill
+<!---
+        <span class="badge color-red">New</span>
+--->        
+        </i>
+        <span class="tabbar-label ACP-title">Avg ACP</span>
+      </a>   
+      <a id="doCostChg" class="tab-link {{#js_if "this.ACTIVE === 'CCHG'"}}Stat-active{{/js_if}}">
+        <i class="icon f7-icons">graph_square</i>
+        <span class="tabbar-label ACP-title">Cost Changes</span>
+      </a>
+    </div>
+</div>        
+
+    <div style="background-color:#f1f1f7;position:fixed;top:95px;width:100%;"><div style="float:left;padding-top:3px;padding-left:3px;display:inline;"></div><div style="float:right;padding-top:3px; padding-right:0px;display:inline;">Last Game Date: {{RESULTDATE}}</div></div>
+
+	<div class="page-content" style="margin-top:117px; padding-top:1px;">  
+         
+		<div id="liJSON" class="list-block media-list sortable" style="margin-top:2px;margin-bottom:2px;clear:both;">
+			<ul>
+<!---            
+            	<li style="min-height:24px;text-align:right;font-size:smaller;padding-top:3px;background-color:#f1f1f7;padding-right:4px;">Last Game Date: {{RESULTDATE}}</li>
+--->                
+			{{#js_if "this.ACTIVE === 'TACP' || this.ACTIVE === 'AACP'"}}
+				{{#each DATA}}     
+				<li class="swipeout" id="TR_{{ascfanta_pid}}">
+					<div class="item-content swipeout-content" style="padding-left:2px;">
+						<div class="item-media TACPRank POS_{{ascfanta_gpos}}" style="padding:3px;width:40px;height:50px;text-align:center;"><span style="width:100%;font-weight:bold;">{{gposn}}</span></div>
+							<div class="item-inner" style="padding:3px">
+								<div class="item-title-row">
+									<div class="item-title" style="padding-top:3px;font-weight:bolder;max-height:22px;">{{ascfanta_gfullname}} - {{ascfanta_pteam}}</div>
+									<div class="item-after" style="padding-top:5px;max-height:22px;">{{ascfanta_tacp.toFixed(1)}}<br />{{ascfanta_aacp.toFixed(1)}}</div>
+								</div>
+								<div class="item-subtitle">COST:${{ascfanta_pvalue_final}}m TD:{{td}}<!---PlayerId:{{ascfanta_pid}}---></div>
+							</div>
+						</div>
+					<div class="sortable-handler"></div>
+					<div class="swipeout-actions-right"><a href="#">More</a><a class="PutWLActive" id="p_{{ascfanta_pid}}">add<br />Watch List</a></div>                      
+				</li>     
+				{{/each}}    
+			{{/js_if}}
+
+			{{#js_if "this.ACTIVE === 'DACP'"}}
+				{{#each DATA}}     
+				<li class="swipeout" id="TR_{{ascfanta_pid}}">
+					<div class="item-content swipeout-content" style="padding-left:2px;">
+						<div class="item-media TACPRank POS_{{ascfanta_gpos}}" style="padding:3px;width:40px;height:50px;text-align:center;"><span style="width:100%;font-weight:bold;">{{gposn}}</span></div>
+							<div class="item-inner" style="padding:3px">
+								<div class="item-title-row">
+									<div class="item-title" style="padding-top:3px;font-weight:bolder;max-height:22px;">{{ascfanta_gfullname}} - {{ascfanta_pteam}}</div>
+									<div class="item-after" style="padding-top:5px;max-height:22px;">{{ascfanta_tacp.toFixed(1)}}</div>
+								</div>
+								<div class="item-subtitle" style="display:inline-block">COST:${{ascfanta_pvalue_final}}m</div>
+                                <div class="TDdisplay bonusFlash">{{#js_if "this.ascfanta_bonus === 'TD'"}}<span>Triple-Double</span>{{/js_if}}</div>
+							</div>
+						</div>
+					<div class="sortable-handler"></div>
+					<div class="swipeout-actions-right"><a href="#">More</a><a class="PutWLActive" id="p_{{ascfanta_pid}}">add<br />Watch List</a></div>                      
+				</li>     
+				{{/each}}    
+			{{/js_if}}
+            <li style="line-height:150px;">.</li>
+			</ul>
+		</div>
+        <div>
+        	<ul>
+            <li>Loading...</li>
+			</ul>  
+		</div>    
+        <div class="preloader"></div>
+	</div>
+</div>

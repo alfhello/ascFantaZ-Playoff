@@ -1,0 +1,52 @@
+        <div class="page" data-page="newHome">
+            <!-- Div for Result -->
+			<div class="page-content">
+<p style="font-size:9px;">off ver {{this.APPVER}}</p>
+<p id="listFiles"></p>
+<p style="display:none;"><button id="listFS">List Files</button>
+<!---
+<button id="delLog">Delete Log File</button>
+<button id="viewLog">View Log</button>
+--->
+<button id="delLS">Delete Local Storage</button>
+<button id="delINI">Delete INI File</button>
+<button id="appendINI">add userId to LS</button>
+<button id="viewINI">View INI</button>
+<button id="viewVar">View default INI</button>
+<button id="viewINIStr">View Local Storage</button>
+</p>
+			<div class="ascPlayOff"></div>
+			<div class="ascLOGO">
+				<h1 style="display:inline-block">fantAz</h1>
+				<sub style="display:inline-block; padding-left:10px;"> {{loginResult}}{{lastloginname}}</sub>
+				<div class="blink">
+                {{#js_if "this.tempSupp > 1000000"}}
+				<button class="ascResult ascTempSupp">Too many Login Failure</button>
+                {{else}}
+				{{#js_compare "this.VALUE === 1"}}
+					{{#js_compare "this.CHKPASS === 1"}}
+<!---			<a href="pagePrepA.html" class="ascResult ascConnect">Start Dict~A</a>
+				<a href="{{this.GOPAGE}}" class="ascResult ascConnect">Start Dict~A</a> --->
+                <button id="btnStartApp" class="ascResult ascConnect">Start btn</button>
+					{{else}}
+<!---			<a href="pageNewReg.html" class="ascResult ascRegLogin">Register / Login</a>
+			<a href="{{this.GOPAGE}}" class="ascResult ascRegLogin">Register / Login</a> --->
+	            <button id="btnUserReg" class="ascResult ascRegLogin">Register btn</button>
+					{{/js_compare}}			
+				{{else}}
+<!---			<a class="ascResult listening">Connecting to Device</a> --->
+				<button class="ascResult listening">Connecting..</button>
+				{{/js_compare}}
+                {{this.DETAIL}}
+                {{/js_if}}
+				</div>
+			</div>
+<!---	
+			{{VALUE}},{{CHKPASS}} <br>
+			<a href="pagePrepA.html" class="ascResult ascConnect">bk Start Dict~A</a><br><br>
+			<a class="ascResult listening">bk Connecting to Device</a><br><br>
+			<a href="login-screen-page.html" class="ascResult ascRegLogin">bk Register / Login</a>	
+--->
+			</div>
+			
+		</div>

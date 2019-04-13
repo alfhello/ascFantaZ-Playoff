@@ -1,0 +1,135 @@
+<div data-page="pageULeague" class="page navbar-through toolbar-through" title="UserTeam League">
+
+<div class="toolbar tabbar tabbar-labels" style="position:fixed;top:43px;height:78px;">
+    <div class="toolbar-inner" style="padding-top:4px;">
+	  <a id="doUTPrvLRank" class="tab-link {{#js_if "this.INTYPE === 'prvL'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">Privacy League<br />Overall{{this.UTDATA[0].ascfanta_nowrank}}</span>
+        <i class="icon f7-icons">business
+        <span class="badge color-red headdsp">{{this.UTDATA[0].ascfanta_nowutrank}}</span>
+        </i>
+        <span class="tabbar-label tDataS">{{this.UTDATA[0].ascfanta_group}}</span>
+      </a>  
+      <a id="doUTPrvLRanklgd" class="tab-link {{#js_if "this.INTYPE === 'prvLlgd'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">Private League<br />Last Result</span>
+        <i class="icon f7-icons ios-only">document_chart</i>
+        <span class="tabbar-label tDataS">ACP: {{UTDATA[0].ascfanta_todaytacp}}</span>
+      </a>
+      <a id="doUTWorldLRank" class="tab-link {{#js_if "this.INTYPE === 'wwL'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">World Rank<br />Overall</span>
+        <i class="icon f7-icons">business_fill
+        <span class="badge color-red headdsp">{{this.UTDATA[0].ascfanta_nowrank}}</span>
+        </i>
+        <span class="tabbar-label tDataS">Top:{{this.TODAYTOP[0].topacp}}p</span>
+      </a>   
+      <a id="doUTWorldLRanklgd" class="tab-link {{#js_if "this.INTYPE === 'wwLlgd'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">World Rank<br />Last Result</span>
+        <i class="icon f7-icons">business_fill
+        </i>
+        <span class="tabbar-label tDataS">Top:{{this.TODAYTOP[0].todaytop}}p</span>
+      </a>   
+      <a id="doCostChg" class="tab-link {{#js_if "this.INTYPE === 'cstHsty'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">Team History</span>
+        <i class="icon f7-icons">graph_square</i>
+        <span class="tabbar-label ACP-title"></span>
+      </a>
+    </div>
+</div>        
+
+    <div style="background-color:#f1f1f7;position:fixed;top:120px;width:100%;"><div style="float:left;padding-top:3px;padding-left:3px;display:inline;">Rank</div><div style="float:right;padding-top:3px; padding-right:0px;display:inline;">Last Game Date: {{GMDATE}}</div></div>
+
+	<div class="page-content" style="margin-top:142px;padding-top:1px;">            
+		<div id="liJSON" class="list-block media-list sortable" style="margin-top:2px;margin-bottom:2px;">
+			<ul>
+				{{#js_if "this.INTYPE === 'prvL'"}}
+               	{{#each DATA}}
+				<li class="swipeout" id="TR_{{ascfanta_teamid}}" style="clear:both;">
+					<div class="item-content swipeout-content {{teamhl}}" style="padding-left:2px;">
+						<div class="item-media TUTLRank RK{{ascfanta_nowutrank}}" style="padding:3px;width:40px;height:50px;text-align:center;"><span style="width:100%;font-weight:bold;">{{ascfanta_nowutrank}}</span></div>
+							<div class="item-inner" style="padding:3px">
+								<div class="item-title-row">
+									<div class="item-title" style="padding-top:3px;font-weight:bolder;max-height:22px;">{{ascfanta_teamname}}</div>
+<!---
+									<div class="item-after" style="padding-top:5px;max-height:22px;">{{ascfanta_tacp.toFixed(1)}}<br />${{ascfanta_teamvalue}}m</div>
+--->
+                                    <div class="item-after" style="max-height:22px;width:110px;display:inline;margin-top:7px;"><div style="font-size:x-small;float:left;margin-top:2px;line-height:18px;">Total ACP:<br>Last ACP:</div><div style="font-size:medium;float:right;">{{ascfanta_tacp.toFixed(1)}}<br>{{ascfanta_todaytacp.toFixed(1)}}</div></div>
+
+								</div>
+								<div class="item-subtitle" style="font-size:small;">last rank:{{ascfanta_lastutrank}} &nbsp;&nbsp;&nbsp;&nbsp;  trade used:</div>
+							</div>
+						</div>
+					<div class="sortable-handler"></div>
+					<div class="swipeout-actions-right"><a href="#">Team<br />History</a><a class="swipeout-delete createLesson">Trade<br /> History</a></div>                      
+				</li> 
+                {{/each}}
+                {{/js_if}}
+
+				{{#js_if "this.INTYPE === 'wwL'"}}
+               	{{#each DATA}}
+				<li class="swipeout" id="TR_{{ascfanta_teamid}}" style="clear:both;">
+					<div class="item-content swipeout-content {{teamhl}}" style="padding-left:2px;">
+						<div class="item-media TUTLRank RK{{ascfanta_nowrank}}" style="padding:3px;width:40px;height:50px;text-align:center"><span style="width:100%;font-weight:bold;">{{ascfanta_nowrank}}</span></div>
+                        <div class="item-inner" style="padding:3px;margin-left:3px;">
+                            <div class="wLGrp">{{ascfanta_group}}</div>
+                            <div class="item-title-row">
+                                    <div class="item-title" style="padding-left:5px;padding-top:4px;font-weight:bolder;">{{ascfanta_teamname}}</div>
+                                    <div class="item-after" style="max-height:22px;width:110px;display:inline;margin-top:7px;"><div style="font-size:x-small;float:left;margin-top:2px;line-height:18px;">Total ACP:<br>Last ACP:</div><div style="font-size:medium;float:right;">{{ascfanta_tacp.toFixed(1)}}<br>{{ascfanta_todaytacp.toFixed(1)}}</div></div>
+                                    </div>
+                            <div class="item-subtitle" style="font-size:small;padding-left:5px;">last rank:{{ascfanta_lastrank}} &nbsp;&nbsp;&nbsp;&nbsp;  trade used:</div>
+                        </div>
+					</div>
+                    <div class="sortable-handler"></div>
+                    <div class="swipeout-actions-right"><a href="#">Team<br />History</a><a class="swipeout-delete createLesson">Trade<br /> History</a></div>                      
+				</li>                    
+                {{/each}}
+                {{/js_if}}
+
+				{{#js_if "this.INTYPE === 'prvLlgd'"}}
+               	{{#each DATA}}
+				<li class="swipeout" id="TR_{{ascfanta_teamid}}" style="clear:both;">
+					<div class="item-content swipeout-content {{teamhl}}" style="padding-left:2px;">
+						<div class="item-media TUTLRank RK{{lgmdrank}}" style="padding:3px;width:40px;height:50px;text-align:center;"><span style="width:100%;font-weight:bold;">{{lgmdrank}}</span></div>
+							<div class="item-inner" style="padding:3px">
+								<div class="item-title-row">
+									<div class="item-title" style="padding-top:3px;font-weight:bolder;max-height:22px;">{{ascfanta_teamname}}</div>
+                                    <div class="item-after" style="max-height:22px;width:110px;display:inline;margin-top:7px;"><div style="font-size:x-small;float:left;margin-top:2px;line-height:18px;">Last ACP:<br>Cost Chg:</div><div style="font-size:medium;float:right;">+{{ascfanta_todaytacp.toFixed(1)}}<br>+0.0M</div></div>
+								</div>
+								<div class="item-subtitle" style="font-size:small;">trade used:0</div>
+							</div>
+						</div>
+					<div class="sortable-handler"></div>
+					<div class="swipeout-actions-right"><a href="#">Team<br />History</a><a class="swipeout-delete createLesson">Trade<br /> History</a></div>                      
+				</li> 
+                {{/each}}
+                {{/js_if}}
+                
+                {{#js_if "this.INTYPE === 'wwLlgd'"}}
+               	{{#each DATA}}
+				<li class="swipeout" id="TR_{{ascfanta_teamid}}" style="clear:both;">
+					<div class="item-content swipeout-content {{teamhl}}" style="padding-left:2px;">
+						<div class="item-media TUTLRank RK{{lgmdrank}}" style="padding:3px;width:40px;height:50px;text-align:center"><span style="width:100%;font-weight:bold;">{{lgmdrank}}</span></div>
+                        <div class="item-inner" style="padding:3px;margin-left:3px;">
+                            <div class="wLGrp">{{ascfanta_group}}</div>
+                            <div class="item-title-row">
+                                    <div class="item-title" style="padding-left:5px;padding-top:4px;font-weight:bolder;">{{ascfanta_teamname}}</div>
+                                    <div class="item-after" style="max-height:22px;width:110px;display:inline;margin-top:7px;"><div style="font-size:x-small;float:left;margin-top:2px;line-height:18px;">Last ACP:<br>Cost Chg:</div><div style="font-size:medium;float:right;">+{{ascfanta_todaytacp.toFixed(1)}}<br>+0.0M</div></div>
+								</div>
+                            <div class="item-subtitle" style="font-size:small;padding-left:5px;">last rank: &nbsp;&nbsp;&nbsp;&nbsp;  trade used:</div>
+                        </div>
+					</div>
+                    <div class="sortable-handler"></div>
+                    <div class="swipeout-actions-right"><a href="#">Team<br />History</a><a class="swipeout-delete createLesson">Trade<br /> History</a></div>                      
+				</li>                    
+                {{/each}}
+                {{/js_if}}
+                
+				<li style="line-height:150px;">.</li>           
+			</ul>
+		</div>
+        <div>
+        	<ul>
+            <li>.</li>
+			</ul>  
+		</div>    
+        <div class="preloader"></div>
+	</div>
+</div>

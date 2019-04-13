@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+
+<p id="userNameLn"></p>
+<p>Thanks for your register and hope you can enjoy our APP.</p>
+
+<script language="javascript">
+var userName = getParameterByName('inName');
+var userMail = getParameterByName('inMail');
+var userApp = getParameterByName('inApp');
+var userKey = getParameterByName('inUserKey');
+
+document.getElementById('userNameLn').innerHTML = 'Hi ' + userName + '. Your account had been activated.<br><br>LoginID:' + userMail + '<br>' + ;
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+</script>
+
+</body>
+</html>

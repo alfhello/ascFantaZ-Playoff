@@ -1,0 +1,173 @@
+<div data-page="newReg" class="page no-navbar no-toolbar no-swipeback">
+  <div class="page-content login-screen-content">
+    <div class="login-screen-title">Dict~A</div>
+    <form id="userNewRegForm">
+      <div class="list-block">
+        <ul>
+
+            <li>
+              <!-- Additional "smart-select" class -->
+              <a href="#" class="item-link smart-select">
+                <!-- select -->
+                <select name="inAppName">
+                {{#each this.AppList}}  
+                    <option value="{{this.AppVal}}">{{this.AppDspName}}</option>
+                {{/each}}     
+                </select>
+        
+                <div class="item-content">
+                  <div class="item-inner">
+                    <!-- Select label -->
+                    <div class="item-title">小程式</div>
+                    <!-- Selected value, not required -->
+                    <div class="item-after">--your school--</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+    
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">登入名稱</div>
+              <div class="item-input">
+                <input type="email" name="username" placeholder="Your eMail" />
+                <input type="text" name="username_wrn" readonly="readonly" style="color:red;font-size:10px;height:20px;" />
+              </div>
+            </div>
+          </li>
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">密碼</div>
+              <div class="item-input">
+                <input type="password" name="orpassword" placeholder="password"/>
+                <input type="text" name="orpassword_wrn" readonly="readonly" style="color:red;font-size:10px;height:20px;" />
+              </div>
+            </div>
+          </li>
+<!---          
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">重新輸入</div>
+              <div class="item-input">
+                <input type="password" name="repassword" placeholder="reEnter password"/>
+              </div>
+            </div>
+          </li>    
+--->          
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">性別</div>
+              <div class="item-input">
+                <select name="gender">
+                  <option disabled="disabled" selected="selected" value="">- Select Gender-</option>
+                  <option value='M'>Male</option>
+                  <option value='F'>Female</option>
+                </select>
+              </div>
+            </div>
+          </li>    
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">出生年月</div>
+              <div class="item-input">
+	              <input type="text" name="DOB" placeholder="Your birth date" readonly id="calendar-DOB">
+              </div>
+            </div>
+          </li>                              
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">居住</div>
+              <div class="item-input">
+				<input type="text" name="liveat" placeholder="Your Area" readonly id="picker-Living">
+              </div>
+            </div>
+          </li>       
+          
+    <li>
+      <!-- Additional "smart-select" class -->
+      <a href="#" class="item-link smart-select">
+        <!-- select -->
+        <select name="yrschool">
+        {{#each this.schools}}  
+	        <optgroup label="{{this.district}}">
+            {{#each this.schoollist}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+            </optgroup>
+        {{/each}}     
+        </select>
+
+        <div class="item-content">
+          <div class="item-inner">
+            <!-- Select label -->
+            <div class="item-title">學校名稱</div>
+            <!-- Selected value, not required -->
+            <div class="item-after">--your school--</div>
+          </div>
+        </div>
+      </a>
+    </li>
+         
+    <li>
+      <!-- Additional "smart-select" class -->
+      <a href="#" class="item-link smart-select">
+        <!-- select -->
+        <select name="yrschoolgrade">
+        {{#each this.grade}}        
+        <optgroup label="{{this.level}}">
+            {{#each this.gradeLv}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        {{/each}}          
+		</optgroup>        
+        </select>
+
+        <div class="item-content">
+          <div class="item-inner">
+            <!-- Select label -->
+            <div class="item-title">班級</div>
+            <!-- Selected value, not required -->
+            <div class="item-after">--your grade--</div>
+          </div>
+        </div>
+      </a>
+    </li>         
+                            
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">Terms</div>
+              <div class="item-input">
+                <input type="checkbox" name="rTerms" />
+              </div>
+            </div>
+          </li>                              
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">Remove Ad</div>
+              <div class="item-input">
+                <input type="checkbox" name="rRemoveAd" />
+              </div>
+            </div>
+          </li>                              
+          
+        </ul>
+      </div>
+      <div class="list-block">
+        <ul>
+          <li style="display:inline-block; float:left;"><a href="#" class="ascResult ascButton sendRegForm" disabled="true">Register</a></li> 
+          <li style="display:inline-block; float:right;"><a id="asclogout" class="ascResult ascCancel">Cancel</a></li>
+        </ul>
+      </div>
+<!---      
+      <input type="hidden" name="inOS" value="" />
+      <input type="hidden" name="inOSver" value="" />
+      <input type="hidden" name="inUUID" value="" />
+      <input type="hidden" name="inMfger" value="" />
+      <input type="hidden" name="inIsVM" value="" />
+      <input type="hidden" name="inLati" value="" />                              
+      <input type="hidden" name="inLongi" value="" />
+      <input type="hidden" name="inAlti" value="" />                                          
+--->      
+    </form>
+  </div>
+</div>   

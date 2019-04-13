@@ -1,0 +1,209 @@
+<div data-page="pagePlayer" class="page navbar-through toolbar-through" title="Player">
+      
+<div class="toolbar tabbar tabbar-labels" style="position:fixed;top:43px;height:78px;">
+    <div class="toolbar-inner" style="padding-top:4px;">
+	  <a id="openPlayerByTeam" class="tab-link BtnPlayer {{#js_if "this.ACTIVE === 'T' || this.ACTIVE === 'Y'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">Player</span>
+        <i class="icon f7-icons">persons</i>
+        <span class="tabbar-label ACP-title">By Team</span>
+      </a>  
+      <a id="openPlayerByPos" class="tab-link BtnPlayer {{#js_if "this.ACTIVE === 'P' || this.ACTIVE === 'G' || this.ACTIVE === 'F' || this.ACTIVE === 'C' || this.ACTIVE === 'B'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">Player</span>
+        <i class="icon f7-icons ios-only">persons</i>
+        <span class="tabbar-label ACP-title">By Position</span>
+      </a>
+      <a id="openPlayerByCost" class="tab-link BtnPlayer {{#js_if "this.ACTIVE === 'S'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">Player</span>
+        <i class="icon f7-icons">persons</i>
+        <span class="tabbar-label ACP-title">By Cost</span>
+      </a>   
+
+<!---
+      <a id="openPlayerB" class="tab-link BtnPlayer {{#js_if "this.ACTIVE === 'B'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">All</span>
+        <i class="icon f7-icons">persons_round</i>
+        <span class="tabbar-label ACP-title">All</span>
+      </a>
+--->      
+      <a id="openTrWL" class="tab-link BtnPlayer {{#js_if "this.ACTIVE === 'W'"}}Stat-active{{/js_if}}">
+        <span class="tabbar-label tHeader">Trade Roster</span>
+        <i class="icon f7-icons">reload_round</i>
+        <span class="tabbar-label ACP-title">{{this.TODAYINFO.0.txclose.slice(5,-5)}} HKT</span>
+      </a>    
+      <a id="doCostChg" class="tab-link TCRm">
+        <span class="tabbar-label tHeader">Cost Remain</span>
+        <i class="icon f7-icons">money_dollar_round</i>
+        <span class="tabbar-label tData TCRm" id="UTCostRemain" name="Cost_{{this.UTHEAD.0.ascfanta_gvalueremain}}">{{this.UTHEAD.0.ascfanta_gvalueremain}}m</span>            
+      </a>                 
+      <a id="doCostChg" class="tab-link TTx">
+        <span class="tabbar-label tHeader">Trade Token</span>
+        <i class="icon f7-icons">briefcase_fill</i>
+        <span class="tabbar-label tData TTx" id="availableToken" name="aTK_{{this.UTHEAD.0.tokenavailable}}">{{this.UTHEAD.0.tokenavailable}}</span>
+      </a>                  
+    </div>
+</div>        
+
+<!---
+<div style="background-color:#f1f1f7;position:fixed;top:95px;width:100%;"><div style="float:left;padding-top:3px;padding-left:3px;display:inline;"></div><div style="float:right;padding-top:3px; padding-right:0px;display:inline;" id="txDate" name="tx-{{TXDATE}}">Value Date: {{TXDATE}}</div></div>
+--->
+
+<div style="background-color:#f1f1f7;position:fixed;top:120px;width:100%;"><div style="float:left;padding-top:4px;padding-left:3px;display:inline;font-size:smaller;">Trade up to: {{this.TODAYINFO.0.txclose.slice(5,-5)}} HKT {{this.TODAYINFO.0.todaygms}} games</div><div style="float:right;padding-top:3px; padding-right:4px;display:inline;font-size:smaller;" id="txDate" name="tx-{{TXDATE}}">Last Game Date: {{this.TODAYINFO.0.lastgmdate}}</div></div>
+
+	{{#js_if "this.ACTIVE === 'T' || this.ACTIVE === 'P' || this.ACTIVE === 'S'"}}
+   	{{#js_if "this.ACTIVE === 'T'"}}
+    <div class="CurrTmRoster" style="position:fixed;top:122px;width:100%;">Team</div>  
+	<div id="tr_UTbyTeam" class="page-content tr_section Active" style="margin-top:185px;padding-top:1px;">         
+	      
+        
+		<div id="Trade_UTRoster" class="list-block media-list sortable" style="margin-top:2px;margin-bottom:2px;">
+				{{#each DATA}}     
+				<li class="swipeout UTTmLi">
+                	<a class="pByTeam" id="T_{{ascfanta_tabbr}}">
+					 <div class="item-inner" style="padding:3px">
+                        <div class="item-title-row">
+                            <div class="item-title" style="padding-top:5px;font-weight:bolder;">{{ascfanta_tcity}} {{#js_if "this.ascfanta_tcity === 'LA'"}}City{{/js_if}}</div>
+                            <div class="item-after UTTmAft" style="margin-top:5px;">Next Gm: {{nextopp}}</div>
+                        </div>
+                    	<div class="item-subtitle" style="margin-top:-5px;font-size:small;">Next 7 days: {{nx7d}} Gm(s)&nbsp;&nbsp;&nbsp;</div>
+                	</div>
+                    </a>
+				</li>    
+				{{/each}}  
+                <li style="line-height:200px;">.</li> 
+		</div>
+    {{/js_if}}
+   	{{#js_if "this.ACTIVE === 'P'"}}
+    <div class="CurrTmRoster" style="position:fixed;top:122px;width:100%;">Position</div>  
+	<div id="tr_UTbyPos" class="page-content tr_section Active" style="margin-top:185px;padding-top:1px;">         
+	      
+        
+		<div id="Trade_UTRoster" class="list-block media-list sortable" style="margin-top:2px;margin-bottom:2px;">
+				{{#each DATA}}     
+				<li class="swipeout UTTmLi">
+                	<a class="pByPos" id="P_{{pos}}">
+					 <div class="item-inner" style="padding:3px">
+                        <div class="item-title-row">
+                            <div class="item-title" style="padding-top:5px;font-weight:bolder;">{{posname}}</div>
+                            <div class="item-after UTTmAft" style="margin-top:5px;"></div>
+                        </div>
+                    	<div class="item-subtitle" style="margin-top:-5px;font-size:small;"></div>
+                	</div>
+                    </a>
+				</li>    
+				{{/each}}  
+                <li style="line-height:200px;">.</li> 
+		</div>
+    {{/js_if}}
+   	{{#js_if "this.ACTIVE === 'S'"}}
+    <div class="CurrTmRoster" style="position:fixed;top:122px;width:100%;">Player Cost Range</div>  
+	<div id="tr_UTbyPos" class="page-content tr_section Active" style="margin-top:185px;padding-top:1px;">         
+	      
+        
+		<div id="Trade_UTRoster" class="list-block media-list sortable" style="margin-top:2px;margin-bottom:2px;">
+				{{#each DATA}}     
+				<li class="swipeout UTTmLi">
+                	<a class="pByCost" id="P_{{cost}}">
+					 <div class="item-inner" style="padding:3px">
+                        <div class="item-title-row">
+                            <div class="item-title" style="padding-top:5px;font-weight:bolder;">{{costname}}</div>
+                            <div class="item-after UTTmAft" style="margin-top:5px;"></div>
+                        </div>
+                    	<div class="item-subtitle" style="margin-top:-5px;font-size:small;"></div>
+                	</div>
+                    </a>
+				</li>    
+				{{/each}}  
+                <li style="line-height:200px;">.</li> 
+		</div>
+    {{/js_if}}    
+    {{else}}
+	<div id="tr_UTRosterList" class="page-content tr_section" style="margin-top:125px;padding-top:1px;">      
+        <div class="CurrTmRoster">Team Roster</div>
+		<div id="Trade_UTRoster" class="list-block media-list sortable" style="margin-top:2px;margin-bottom:2px;">
+				{{#each UTROSTER}}     
+				<li class="swipeout UTTrLi" id="TR_{{ascfanta_pid}}" name="{{utr_posv}}log" style="clear:both;">
+                <div class="item-content swipeout-content UTTr" name="PC_{{ascfanta_gnowvalue}}" style="padding-left:2px;">
+                    <div class="item-media TPOS POS_{{utr_pos}}" style="padding:3px"><p class="POSFlag" id="{{utr_posv}}">{{utr_pos}}</p></div>
+                    <!---
+                    <div id="ChgPos{{utr_pos}}" class="item-media CPOS AvailTo" style="padding:3px"><p>{{utr_pos}}</p></div>
+                    --->
+                    <div class="item-inner" style="padding:3px">
+                        <div class="item-title-row">
+                            <div class="item-title" style="padding-top:5px;font-weight:bolder;">{{ascfanta_pname}} - {{ascfanta_pteam}}</div>
+                            <div class="item-after UTTrAft" style="margin-top:5px;">Next Gm: {{nextopp}} <br />Cost:{{ascfanta_gnowvalue}}M</div>
+                        </div>
+                    	<div class="item-subtitle" style="margin-top:-5px;font-size:small;">Next 7 days: {{nx7d}} Gm(s)&nbsp;&nbsp;&nbsp; Total ACP:{{ascfanta_gttlacp}}</div>
+                	</div>
+                </div>
+				<div class="swipeout-actions-right"><a class="SellActive" id="sAct_{{utr_posv}}">Sell</a><a class="SellCancel" id="sCan_{{utr_posv}}">Cancel</a></div>
+				</li>    
+				{{/each}}   
+		</div>
+
+		<div class="CmdBar_woReplace">
+        	<div style="display:inline;float:left;"><a id=""></a></div>
+            <div style="display:inline;float:right;"><a id="sellPlayerWReplace">Make Trade</a></div>
+        </div>
+		<div class="RdyTrSepr"><a id="clearWatchList" style="float:left;font-size:x-small;">Clear<br />Watch List</a>Watch List</div>
+
+		<div id="liJSON" class="list-block media-list sortable" style="margin-top:2px;margin-bottom:2px;">
+            {{#each WLINFO}}     
+            <li class="swipeout RdyTrLi" id="TR_{{ascfanta_pid}}" name="TRP_{{gposn}}" style="clear:both;">
+            <div class="item-content swipeout-content RdyTr" name="PC_{{ascfanta_gnowvalue}}" style="padding-left:2px;">
+                <div class="item-media TPOS POS_{{gposn}}" style="padding:3px"><p class="POSFlag" id="{{gposn}}">{{gposn}}</p></div>
+                <div id="ChgPosG" class="item-media CPOS AvailTo" style="padding:3px"><p>G</p></div>
+                <div id="ChgPosF" class="item-media CPOS AvailTo" style="padding:3px"><p>F</p></div>
+                <div id="ChgPosC" class="item-media CPOS AvailTo" style="padding:3px"><p>C</p></div>
+                <div id="ChgPosB" class="item-media CPOS AvailTo" style="padding:3px"><p>B</p></div>
+                <div class="item-inner" style="padding:3px">
+                    <div class="item-title-row">
+                        <div class="item-title" style="padding-top:5px;font-weight:bolder;">{{ascfanta_gfullname}} - {{ascfanta_pteam}}</div>
+                        <div class="item-after UTTrAft" style="margin-top:5px;font-size:small;">Next Gm: {{nextopp}}<br /> Cost: {{ascfanta_gnowvalue}}M</div>
+                    </div>
+                <!---
+                <div class="item-subtitle">TACP:{{ascfanta_gttlacp}}p Last:{{ascfanta_glastacp}}p <!---PlayerId:{{ascfanta_pid}}---</div> --->
+                    <div class="item-text" style="margin-top:-5px;font-size:small;">Next 7 days: {{nx7d}} Gm(s) &nbsp;&nbsp;&nbsp;Total ACP:{{ascfanta_tacp}}</div>
+                </div>
+            </div>
+            <div class="swipeout-actions-right"><a class="BuyActive" id="sBuy_{{ascfanta_pid}}">Buy</a><a class="BuyCancel" id="sCan_{{ascfanta_pid}}">Cancel</a><a class="RemoveWL" id="rm_{{ascfanta_pid}}">Remove WatchList</a></div>
+            </li>    
+            {{/each}}
+            <li style="line-height:150px;">.</li> 
+		</div>
+	</div>
+
+	<div id="tr_PlayerList" class="page-content tr_section Active" style="margin-top:125px; padding-top:1px;">   
+<!---	replace by tmRosterWL in index.html --    
+		<div class=""><a id="moveToUTRWL">Team Roster & Watch List</a></div> --->
+    	<div class="PlyLst">{{PARAM}} Player List</div>
+		<div id="tr_PList" class="list-block media-list sortable" style="margin-top:2px;margin-bottom:2px;clear:both;">
+			<ul>
+	            {{#each PLST}}
+                <li class="swipeout" id="buysp_{{ascfanta_gfullname}}_{{ascfanta_pid}}_{{ascfanta_gpos}}_{{mdate}}_{{ascfanta_gnowvalue.toFixed(1)}}_{{ascfanta_newval_key}}" name="p_{{ascfanta_pid}}" style="clear:both;">
+					<div class="item-content swipeout-content" style="padding-left:2px;">
+						<div class="item-media TACPRank POS_{{ascfanta_gpos}}" style="padding:3px;width:40px;height:50px;text-align:center"><span style="width:100%;font-weight:bold;">{{gposn}}</span></div>
+                        <div class="item-inner" style="padding:3px;margin-left:3px;">
+                            <div class="item-title-row">
+                                    <div class="item-title" style="padding-left:5px;padding-top:4px;font-weight:bolder;">{{ascfanta_gfullname}}</div>
+                                    <div class="item-after" style="max-height:22px;width:110px;display:inline;margin-top:7px;"><div style="font-size:x-small;float:left;margin-top:2px;line-height:18px;">Total ACP:<br>COST:</div><div style="font-size:medium;float:right;">{{ascfanta_tacp.toFixed(1)}}<br>{{ascfanta_gnowvalue.toFixed(1)}}</div></div>
+                                    </div>
+                            <div class="item-subtitle" style="font-size:small;padding-left:5px;">Next 7 days: {{nx7d}} Gm(s)&nbsp;&nbsp;&nbsp;Next Opp: {{nextopp}}</div>
+                        </div>
+					</div>
+                    <div class="sortable-handler"></div>
+                    <div class="swipeout-actions-right"><a class="plyHist">Stat</a><a class="PutWLActive" id="p_{{ascfanta_pid}}">add<br />Watch List</a></div>                      
+				</li>                    
+                {{/each}}
+                
+                <li style="line-height:150px;">.</li>
+			</ul>
+		</div>
+        <div>
+        	<ul>
+            <li>Loading...</li>
+			</ul>  
+		</div>    
+        <div class="preloader"></div>
+	</div>
+    {{/js_if}}            
+</div>

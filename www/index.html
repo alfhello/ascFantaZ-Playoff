@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; connect-src *; style-src 'self' 'unsafe-inline'; media-src *">
+        
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Your app title -->
+    <title>fantAz</title>
+
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+	<link rel="stylesheet" href="css/framework7-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block">
+            <p>Left panel content goes here</p>
+        </div>
+    </div>
+
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar navbar-hidden">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+<!---                    
+					<div class="left"><a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a></div>
+--->
+					<div class="" style="width:150px;text-align:left;"><a href="#" class="tmRosterWL">Team Roster & Wish List</a></div>                   
+                    <div class=""><!--- FantAz ---> <span class="TopTeamName">*</span></div>
+                    <div class="" style="width:150px;text-align:right;">
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                        <a href="#" class="hiddenBtn">SAVE</a>
+                        <span class="preloader"></span>
+                    </div>
+                </div>
+            </div> <!-- End Top Navbar -->
+      
+<!-- Page -->      
+<div class="pages">
+	<div class="page" data-page="ascindex">
+        <div class="ascHome">
+            <p id="clickToStart">ASC presented</p>
+        </div>
+    </div>
+</div>                        
+<!-- End Page -->        
+			
+            <!-- Bottom Toolbar-->
+            <div class="toolbar tabbar tabbar-labels toolbar-hidden">
+                <div class="toolbar-inner">
+                    <a id="toolbarRoster" class="link active">
+                        <i class="f7-icons">compose</i>
+                        <span class="tabbar-label">Roster</span>
+                    </a>
+                    <a id="toolbarLeague" class="link">                    
+                        <i class="f7-icons">business</i>
+                        <span class="tabbar-label">League</span>
+                    </a>
+                    <a id="toolbarRank" class="link">
+                        <i class="f7-icons">compose_fill</i>
+                        <span class="tabbar-label">Ranking</span>
+                    </a>
+                    <a id="toolbarPlayer" class="link">
+                        <i class="f7-icons">persons</i>
+                        <span class="tabbar-label">Trade Center</span>
+                    </a>
+<!---
+                    <a id="toolbarShop" class="link">
+                        <i class="f7-icons">graph_square</i>
+                        <span class="tabbar-label">Schedule</span>
+                    </a>
+--->                    
+                    <a href="pageSettA.html" id="toolbarSettA" class="link">
+                        <i class="f7-icons">settings</i>
+                        <span class="tabbar-label">Setting</span>
+                    </a>
+                </div>
+            </div> <!-- End Bottom Toolbar -->
+
+    </div> <!-- End View -->
+</div> <!-- End Views -->
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/my-fanta.js"></script>    
+</body>
+
+</html>

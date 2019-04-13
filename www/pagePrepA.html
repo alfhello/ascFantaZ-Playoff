@@ -1,0 +1,75 @@
+<!--
+<div class="pages navbar-through toolbar-through">
+-->
+
+    <div data-page="pagePrepA" class="page navbar-through toolbar-through" title="Preparation">
+        <div class="page-content" style="margin-top:40px; padding-top:1px;">
+           
+			<div class="content-block-title">Team Roster</div>
+            
+    		<div id="liJSON" class="list-block media-list sortable" style="margin-top:2px;">
+            {{#each BOOKSPACE}}{{#if bookenable}}
+            <ul>
+            <li class="swipeout">
+            	<div class="item-content swipeout-content">
+                	<div class="item-media"><i class="f7-icons">pause</i></div>
+                    	<div class="item-inner">
+                        	<div class="item-title-row">
+                            	<div class="item-title">{{booktitle}}</div>
+                                <div class="item-after">{{bookdueto}}</div>
+							</div>
+                            <div class="item-subtitle">{{booksubtitle}}</div>
+                            <div class="item-text">{{bookdesc}}</div>
+						</div>
+                    </div>
+                <div class="sortable-handler"></div>
+                <div class="swipeout-actions-left"><a>Share</a></div>
+                <div class="swipeout-actions-right"><a href="#">More</a><a class="swipeout-delete createLesson">delete</a></div>                      
+            </li>
+            </ul>
+            {{/if}}
+            {{/each}}
+            </div>
+            
+            <div class="content-block-title">Available slot 空間</div>
+            <div class="list-block liLessSpace">
+                {{#each BOOKSPACE}}
+                {{#unless bookenable}}
+                <ul>
+                <li>
+                <a class="item-content item-link createPrepLesson">
+                    <div class="item-inner">
+                        <div class="item-title">Lesson +</div>
+                    </div>
+                </a>
+                </li>
+                </ul>
+                {{/unless}}
+                {{/each}}
+            </div>
+
+        <div class="content-block-title">Buy more slot 購買</div>
+        <div class="list-block">
+            <ul>
+            <li>
+            <a class="item-content item-link createLesson">
+                <div class="item-inner">
+                    <div class="item-title">$ 購買空間</div>
+                </div>
+            </a>
+            </li>
+			</ul>
+            <ul>
+            <li>
+            <a class="item-content item-link">
+                <div class="item-inner">
+                    <div class="item-title">Donation 贊助</div>
+                </div>
+            </a>
+            </li>
+			</ul>            
+		</div>
+        <div class="addPrepLess">Add Prep Lesson</div>
+        <div class="createLesson">Add Lesson Sapce</div>
+    </div>
+</div>
